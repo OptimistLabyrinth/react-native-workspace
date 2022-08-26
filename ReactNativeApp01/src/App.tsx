@@ -7,20 +7,25 @@
  */
 
 import React from 'react';
-import {View, StyleSheet, SafeAreaView} from 'react-native';
-import Counter from './Counter';
-import Header from './Header';
-import UserInput from './UserInput';
+import {View, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import navigationNames from '../navigationConst/navigationNames';
+import Home from './Home';
+import Page1 from './Page1';
+import Page2 from './Page2';
+import Page3 from './Page3';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+  // prettier-ignore
   return (
-    <SafeAreaView>
+    <NavigationContainer>
       <View style={styles.mainView}>
-        <Header />
-        <Counter />
-        <UserInput />
+        <StackNavigator />
       </View>
-    </SafeAreaView>
+    </NavigationContainer>
   );
 }
 
@@ -29,39 +34,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  subViewAbove: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  subViewBelow: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  eachButton: {
-    flex: 1,
-    margin: 5,
-    borderRadius: 10,
-    borderWidth: 5,
-    borderStyle: 'solid',
-    borderColor: 'green',
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonTitle: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    color: 'white',
-    fontWeight: 'bold',
-    backgroundColor: 'green',
-  },
 });
+
+function StackNavigator() {
+  return (
+    <Stack.Navigator initialRouteName={navigationNames.home}>
+      <Stack.Screen name={navigationNames.home} component={Home} />
+      <Stack.Screen name={navigationNames.page1} component={Page1} />
+      <Stack.Screen name={navigationNames.page2} component={Page2} />
+      <Stack.Screen name={navigationNames.page3} component={Page3} />
+    </Stack.Navigator>
+  );
+}
