@@ -1,22 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, {useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   GestureResponderEvent,
+  Button,
 } from 'react-native';
-import Header from './src/Header';
 
-export default function App() {
+export default function Counter() {
   const [number, setNumber] = useState<number>(0);
 
   function onPressIncrease(_event: GestureResponderEvent) {
@@ -32,41 +23,53 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView>
-      <View style={styles.mainView}>
-        <Header />
-        <View style={styles.subViewAbove}>
-          <Text>{number}</Text>
-        </View>
-        <View style={styles.subViewBelow}>
+    <>
+      <View style={styles.subViewAbove}>
+        <Text>{number}</Text>
+      </View>
+      <View style={styles.subViewBelow}>
+        <View style={styles.buttonsContainer}>
           <View style={styles.eachButton} />
           <View style={styles.eachButton}>
-            <Text onPress={onPressIncrease} style={styles.buttonTitle}>
+            <Button onPress={onPressIncrease} title="+" />
+          </View>
+          <View style={styles.eachButton}>
+            <Button onPress={onPressReset} title="reset" />
+          </View>
+          <View style={styles.eachButton}>
+            <Button onPress={onPressDecrease} title="-" />
+          </View>
+          <View style={styles.eachButton} />
+        </View>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.eachButtonWithText} />
+          <View style={styles.eachButtonWithText}>
+            <Text
+              onPress={onPressIncrease}
+              style={styles.titleInButtonWithText}>
               +
             </Text>
           </View>
-          <View style={styles.eachButton}>
-            <Text onPress={onPressReset} style={styles.buttonTitle}>
+          <View style={styles.eachButtonWithText}>
+            <Text onPress={onPressReset} style={styles.titleInButtonWithText}>
               reset
             </Text>
           </View>
-          <View style={styles.eachButton}>
-            <Text onPress={onPressDecrease} style={styles.buttonTitle}>
+          <View style={styles.eachButtonWithText}>
+            <Text
+              onPress={onPressDecrease}
+              style={styles.titleInButtonWithText}>
               -
             </Text>
           </View>
-          <View style={styles.eachButton} />
+          <View style={styles.eachButtonWithText} />
         </View>
       </View>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  mainView: {
-    width: '100%',
-    height: '100%',
-  },
   subViewAbove: {
     flex: 1,
     backgroundColor: '#fff',
@@ -75,11 +78,21 @@ const styles = StyleSheet.create({
   },
   subViewBelow: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonsContainer: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
   eachButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  eachButtonWithText: {
     flex: 1,
     margin: 5,
     borderRadius: 10,
@@ -90,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonTitle: {
+  titleInButtonWithText: {
     flex: 1,
     width: '100%',
     height: '100%',
