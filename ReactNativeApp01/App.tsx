@@ -12,11 +12,11 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
-  Button,
   GestureResponderEvent,
 } from 'react-native';
+import Header from './src/Header';
 
-function App() {
+export default function App() {
   const [number, setNumber] = useState<number>(0);
 
   function onPressIncrease(_event: GestureResponderEvent) {
@@ -34,19 +34,26 @@ function App() {
   return (
     <SafeAreaView>
       <View style={styles.mainView}>
+        <Header />
         <View style={styles.subViewAbove}>
           <Text>{number}</Text>
         </View>
         <View style={styles.subViewBelow}>
           <View style={styles.eachButton} />
           <View style={styles.eachButton}>
-            <Button onPress={onPressIncrease} title="+" />
+            <Text onPress={onPressIncrease} style={styles.buttonTitle}>
+              +
+            </Text>
           </View>
           <View style={styles.eachButton}>
-            <Button onPress={onPressReset} title="reset" />
+            <Text onPress={onPressReset} style={styles.buttonTitle}>
+              reset
+            </Text>
           </View>
           <View style={styles.eachButton}>
-            <Button onPress={onPressDecrease} title="-" />
+            <Text onPress={onPressDecrease} style={styles.buttonTitle}>
+              -
+            </Text>
           </View>
           <View style={styles.eachButton} />
         </View>
@@ -74,7 +81,25 @@ const styles = StyleSheet.create({
   },
   eachButton: {
     flex: 1,
+    margin: 5,
+    borderRadius: 10,
+    borderWidth: 5,
+    borderStyle: 'solid',
+    borderColor: 'green',
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonTitle: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+    backgroundColor: 'green',
   },
 });
-
-export default App;
