@@ -33,14 +33,22 @@ function App() {
 
   return (
     <SafeAreaView>
-      <View style={styles.wrapper}>
-        <View style={styles.background}>
+      <View style={styles.mainView}>
+        <View style={styles.subViewAbove}>
           <Text>{number}</Text>
         </View>
-        <View style={styles.buttons}>
-          <Button onPress={onPressIncrease} title="+" />
-          <Button onPress={onPressReset} title="reset" />
-          <Button onPress={onPressDecrease} title="-" />
+        <View style={styles.subViewBelow}>
+          <View style={styles.eachButton} />
+          <View style={styles.eachButton}>
+            <Button onPress={onPressIncrease} title="+" />
+          </View>
+          <View style={styles.eachButton}>
+            <Button onPress={onPressReset} title="reset" />
+          </View>
+          <View style={styles.eachButton}>
+            <Button onPress={onPressDecrease} title="-" />
+          </View>
+          <View style={styles.eachButton} />
         </View>
       </View>
     </SafeAreaView>
@@ -48,17 +56,17 @@ function App() {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
+  mainView: {
     width: '100%',
     height: '100%',
   },
-  background: {
+  subViewAbove: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttons: {
+  subViewBelow: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
