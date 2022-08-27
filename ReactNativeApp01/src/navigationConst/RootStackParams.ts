@@ -1,7 +1,7 @@
-import Home from '../src/Home';
-import Page1 from '../src/Page1';
-import Page2 from '../src/Page2';
-import Page3 from '../src/Page3';
+import Home from '../Home';
+import Page1 from '../Page1';
+import Page2 from '../Page2';
+import Page3 from '../Page3';
 
 export type RootStackParamsKeyType = 'Home' | 'Page1' | 'Page2' | 'Page3';
 

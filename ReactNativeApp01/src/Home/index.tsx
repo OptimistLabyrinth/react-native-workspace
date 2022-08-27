@@ -2,11 +2,11 @@ import React from 'react';
 import {GestureResponderEvent, StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import navigationNames from '../../navigationConst/navigationNames';
+import navigationNames from '../navigationConst/navigationNames';
 import {
   RootStackParams,
   RootStackParamsKeyType,
-} from '../../navigationConst/RootStackParams';
+} from '../navigationConst/RootStackParams';
 import Page1 from '../Page1';
 import Page2 from '../Page2';
 import Page3 from '../Page3';
